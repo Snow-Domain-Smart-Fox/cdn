@@ -70,11 +70,6 @@
     "cdnUrl": "https://cdn.amlg.top/npm/izitoast@1.4.0/"
   },
   {
-    "name": "icomoon-css",
-    "version": "master",
-    "cdnUrl": "https://cdn.amlg.top/gh/marcelodolza/iziToast@master/docs/css/"
-  },
-  {
     "name": "animate.css",
     "version": "4.1.1",
     "cdnUrl": "https://cdn.amlg.top/npm/animate.css@4.1.1/"
