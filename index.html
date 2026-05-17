@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Argon CDN - 高性能前端资源加速服务">
+    <title>Argon CDN</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+
+    <!-- 图标库 -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/regular.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* ========== 变量定义 ========== */
+        :root {
+            --ifm-color-scheme: light;
+            --ifm-dark-value: 10%;
+            --ifm-darker-value: 15%;
+            --ifm-darkest-value: 30%;
+            --ifm-light-value: 15%;
+            --ifm-lighter-value: 30%;
+            --ifm-lightest-value: 50%;
+            --ifm-contrast-background-value: 90%;
+            --ifm-contrast-foreground-value: 70%;
+            --ifm-contrast-background-dark-value: 70%;
+            --ifm-contrast-foreground-dark-value: 90%;
+            --ifm-color-primary: #3578e5;
+            --ifm-color-secondary: #ebedf0;
+            --ifm-color-success: #00a400;
+            --ifm-color-info: #54c7ec;
+            --ifm-color-warning: #ffba00;
+            --ifm-color-danger: #fa383e;
+            --ifm-color-primary-dark: #306cce;
+            --ifm-color-primary-darker: #2d66c3;
+            --ifm-color-primary-darkest: #2554a0;
+            --ifm-color-primary-light: #538ce9;
+            --ifm-color-primary-lighter: #72a1ed;
+            --ifm-color-primary-lightest: #9abcf2;
+            --ifm-color-primary-contrast-background: #ebf2fc;
+            --ifm-color-primary-contrast-foreground: #102445;
+            --ifm-color-secondary-dark: #d4d5d8;
+            --ifm-color-secondary-darker: #c8c9cc;
+            --ifm-color-secondary-darkest: #a4a6a8;
+            --ifm-color-secondary-light: #eef0f2;
+            --ifm-color-secondary-lighter: #f1f2f5;
+            --ifm-color-secondary-lightest: #f5f6f8;
+            --ifm-color-secondary-contrast-background: #fdfdfe;
+            --ifm-color-secondary-contrast-foreground: #474748;
+            --ifm-color-success-dark: #009400;
+            --ifm-color-success-darker: #008b00;
+            --ifm-color-success-darkest: #007300;
+            --ifm-color-success-light: #26b226;
+            --ifm-color-success-lighter: #4dbf4d;
+            --ifm-color-success-lightest: #80d280;
+            --ifm-color-success-contrast-background: #e6f6e6;
+            --ifm-color-success-contrast-foreground: #003100;
+            --ifm-color-info-dark: #4cb3d4;
+            --ifm-color-info-darker: #47a9c9;
+            --ifm-color-info-darkest: #3b8ba5;
+            --ifm-color-info-light: #6ecfef;
+            --ifm-color-info-lighter: #87d8f2;
+            --ifm-color-info-lightest: #aae3f6;
+            --ifm-color-info-contrast-background: #eef9fd;
+            --ifm-color-info-contrast-foreground: #193c47;
+            --ifm-color-warning-dark: #e6a700;
+            --ifm-color-warning-darker: #d99e00;
+            --ifm-color-warning-darkest: #b38200;
+            --ifm-color-warning-light: #ffc426;
+            --ifm-color-warning-lighter: #ffcf4d;
+            --ifm-color-warning-lightest: #ffdd80;
+            --ifm-color-warning-contrast-background: #fff8e6;
+            --ifm-color-warning-contrast-foreground: #4d3800;
+            --ifm-color-danger-dark: #e13238;
+            --ifm-color-danger-darker: #d53035;
+            --ifm-color-danger-darkest: #af272b;
+            --ifm-color-danger-light: #fb565b;
+            --ifm-color-danger-lighter: #fb7478;
+            --ifm-color-danger-lightest: #fd9c9f;
+            --ifm-color-danger-contrast-background: #ffebec;
+            --ifm-color-danger-contrast-foreground: #4b1113;
+            --ifm-color-white: #fff;
+            --ifm-color-black: #000;
+            --ifm-color-gray-0: var(--ifm-color-white);
+            --ifm-color-gray-100: #f5f6f7;
+            --ifm-color-gray-200: #ebedf0;
+            --ifm-color-gray-300: #dadde1;
+            --ifm-color-gray-400: #ccd0d5;
+            --ifm-color-gray-500: #bec3c9;
+            --ifm-color-gray-600: #8d949e;
+            --ifm-color-gray-700: #606770;
+            --ifm-color-gray-800: #444950;
+            --ifm-color-gray-900: #1c1e21;
+            --ifm-color-gray-1000: var(--ifm-color-black);
+            --ifm-color-emphasis-0: var(--ifm-color-gray-0);
+            --ifm-color-emphasis-100: var(--ifm-color-gray-100);
+            --ifm-color-emphasis-200: var(--ifm-color-gray-200);
+            --ifm-color-emphasis-300: var(--ifm-color-gray-300);
+            --ifm-color-emphasis-400: var(--ifm-color-gray-400);
+            --ifm-color-emphasis-600: var(--ifm-color-gray-600);
+            --ifm-color-emphasis-700: var(--ifm-color-gray-700);
+            --ifm-color-emphasis-800: var(--ifm-color-gray-800);
+            --ifm-color-emphasis-900: var(--ifm-color-gray-900);
+            --ifm-color-emphasis-1000: var(--ifm-color-gray-1000);
+            --ifm-color-content: var(--ifm-color-emphasis-900);
+            --ifm-color-content-inverse: var(--ifm-color-emphasis-0);
+            --ifm-color-content-secondary: #525860;
+            --ifm-background-color: #0000;
+            --ifm-background-surface-color: var(--ifm-color-content-inverse);
+            --ifm-global-border-width: 1px;
+            --ifm-global-radius: 0.4rem;
+            --ifm-hover-overlay: #0000000d;
+            --ifm-font-color-base: var(--ifm-color-content);
+            --ifm-font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --ifm-spacing-horizontal: 1rem;
+            --ifm-spacing-vertical: 1rem;
+        }
+
+        /* ========== 基础重置与布局 ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--ifm-font-family-base);
+            background: var(--ifm-background-surface-color);
+            color: var(--ifm-font-color-base);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ========== Header 样式 ========== */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem var(--ifm-spacing-horizontal);
+            background: var(--ifm-background-surface-color);
+            border-bottom: 1px solid var(--ifm-color-emphasis-200);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--ifm-color-primary);
+            text-decoration: none;
+        }
+
+        .logo i,
+        .logo svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .header-title {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .sitemap-link {
+            font-size: calc(1rem * 2/3);
+            color: var(--ifm-color-content-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: color 0.2s ease;
+        }
+
+        .sitemap-link:hover {
+            color: var(--ifm-color-primary);
+        }
+
+        .sitemap-link i {
+            font-size: 1em;
+        }
+
+        /* ========== Main 内容区域 ========== */
+        main {
+            flex: 1;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem var(--ifm-spacing-horizontal);
+            width: 100%;
+        }
+
+        /* 介绍部分 */
+        .intro {
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .intro h1 {
+            font-size: 1.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--ifm-font-color-base);
+        }
+
+        .intro p {
+            color: var(--ifm-color-content-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1rem;
+        }
+
+        /* 性能指标 */
+        .performance {
+            background: var(--ifm-background-surface-color);
+            border: 1px solid var(--ifm-color-emphasis-200);
+            border-radius: var(--ifm-global-radius);
+            padding: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .performance h2 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .performance h2 i {
+            width: 18px;
+            height: 18px;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .metric-card {
+            background: var(--ifm-color-emphasis-100);
+            padding: 0.875rem;
+            border-radius: calc(var(--ifm-global-radius) * 0.8);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .metric-card.testing {
+            opacity: 0.7;
+        }
+
+        .metric-value {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--ifm-color-primary);
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: var(--ifm-color-content-secondary);
+            margin-top: 0.25rem;
+        }
+
+        /* 包列表 */
+        .packages-section h2 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .package-card {
+            background: var(--ifm-background-surface-color);
+            border: 1px solid var(--ifm-color-emphasis-200);
+            border-radius: var(--ifm-global-radius);
+            padding: 1rem;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .package-card:hover {
+            border-color: var(--ifm-color-primary);
+            box-shadow: 0 2px 8px var(--ifm-hover-overlay);
+        }
+
+        .package-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+
+        .package-name {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--ifm-font-color-base);
+        }
+
+        .package-version {
+            font-size: 0.8rem;
+            color: var(--ifm-color-content-secondary);
+            background: var(--ifm-color-emphasis-100);
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+        }
+
+        .package-url {
+            font-size: 0.85rem;
+            color: var(--ifm-color-primary);
+            text-decoration: none;
+            word-break: break-all;
+            display: block;
+            padding: 0.25rem 0;
+            border-top: 1px dashed var(--ifm-color-emphasis-200);
+            margin-top: 0.5rem;
+            transition: color 0.2s ease;
+        }
+
+        .package-url:hover {
+            color: var(--ifm-color-primary-dark);
+        }
+
+        /* 分页 */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .page-btn {
+            padding: 0.4rem 0.85rem;
+            border: 1px solid var(--ifm-color-emphasis-300);
+            background: var(--ifm-background-surface-color);
+            color: var(--ifm-font-color-base);
+            border-radius: calc(var(--ifm-global-radius) * 0.8);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .page-btn:hover:not(:disabled) {
+            border-color: var(--ifm-color-primary);
+            color: var(--ifm-color-primary);
+        }
+
+        .page-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .page-btn.active {
+            background: var(--ifm-color-primary);
+            border-color: var(--ifm-color-primary);
+            color: var(--ifm-color-white);
+        }
+
+        .page-info {
+            font-size: 0.9rem;
+            color: var(--ifm-color-content-secondary);
+            margin: 0 0.5rem;
+        }
+
+        /* 加载与空状态 */
+        .loading-container,
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1rem;
+            text-align: center;
+            color: var(--ifm-color-content-secondary);
+        }
+
+        .empty-state {
+            min-height: 200px;
+        }
+
+        /* ========== Footer 样式 ========== */
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem var(--ifm-spacing-horizontal);
+            background: var(--ifm-background-surface-color);
+            border-top: 1px solid var(--ifm-color-emphasis-200);
+            margin-top: auto;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: var(--ifm-color-content-secondary);
+        }
+
+        .footer-sitemap {
+            font-size: calc(1rem * 2/3);
+            color: var(--ifm-color-content-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-sitemap:hover {
+            color: var(--ifm-color-primary);
+        }
+
+        .footer-sitemap i {
+            font-size: 1em;
+        }
+
+        /* ========== Loading 组件样式 ========== */
+        .loading-spinner {
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .loading-spinner-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 4px solid transparent;
+            border-top-color: var(--ifm-color-primary);
+            border-radius: 50%;
+            animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        }
+
+        .loading-spinner-ring:nth-child(2) {
+            border-top-color: var(--ifm-color-primary-light);
+            animation-delay: -0.3s;
+        }
+
+        .loading-spinner-ring:nth-child(3) {
+            border-top-color: var(--ifm-color-primary-lighter);
+            animation-delay: -0.15s;
+        }
+
+        .loading-spinner-ring:first-child {
+            animation-delay: -0.45s;
+        }
+
+        .loading-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: var(--ifm-font-color-base);
+            animation: pulse-opacity 1.5s ease-in-out infinite;
+            margin: 1.5rem 0;
+        }
+
+        .loading-progress {
+            position: relative;
+            width: 200px;
+            height: 4px;
+            background: var(--ifm-color-emphasis-200);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .loading-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg,
+                    var(--ifm-color-primary-lightest),
+                    var(--ifm-color-primary),
+                    var(--ifm-color-primary-dark));
+            border-radius: 2px;
+            transform-origin: left;
+            animation: progress-fill 3s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(1turn);
+            }
+        }
+
+        @keyframes pulse-opacity {
+
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes progress-fill {
+            0% {
+                transform: scaleX(0);
+            }
+
+            100% {
+                transform: scaleX(1);
+            }
+        }
+
+        /* ========== 响应式适配 ========== */
+        @media (max-width: 768px) {
+            header {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                padding: 0.875rem var(--ifm-spacing-horizontal);
+            }
+
+            .header-title {
+                display: none;
+            }
+
+            main {
+                padding: 1.5rem var(--ifm-spacing-horizontal);
+            }
+
+            .intro h1 {
+                font-size: 1.4rem;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 0.75rem;
+                text-align: center;
+            }
+
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 全局加载遮罩 */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--ifm-background-surface-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="page-loader" class="page-loader">
+        <div class="loading-container">
+            <div class="loading-spinner">
+                <div class="loading-spinner-ring"></div>
+                <div class="loading-spinner-ring"></div>
+                <div class="loading-spinner-ring"></div>
+            </div>
+            <div class="loading-text">LOADING</div>
+            <div class="loading-progress">
+                <div class="loading-progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <a href="/" class="logo" aria-label="Argon CDN 首页">
+            <i data-lucide="layers"></i>
+            Argon CDN
+        </a>
+        <div class="header-right">
+            <span class="header-title">静态资源加速</span>
+            <a href="/sitemap.xml" class="sitemap-link" title="站点地图" aria-label="站点地图">
+                <i class="fa-regular fa-map"></i>
+                站点地图
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- 介绍 -->
+        <section class="intro">
+            <h1>Argon CDN</h1>
+            <p>高性能、高可用的前端资源加速服务，支持多版本共存，全球边缘节点分发，为您的应用提供毫秒级加载体验。</p>
+        </section>
+
+        <!-- 性能指标 (动态测试) -->
+        <section class="performance">
+            <h2>
+                <i data-lucide="activity"></i>
+                实时性能测试
+            </h2>
+            <p>测试项目： https://cdn.amlg.top/npm/animejs@3.2.1/lib/anime.min.js<br><br></p>
+            <div class="metrics">
+                <div class="metric-card" id="metric-latency">
+                    <div class="metric-value">--</div>
+                    <div class="metric-label">延迟 (Latency)</div>
+                </div>
+                <div class="metric-card" id="metric-download">
+                    <div class="metric-value">--</div>
+                    <div class="metric-label">下载速度</div>
+                </div>
+                <div class="metric-card" id="metric-status">
+                    <div class="metric-value">--</div>
+                    <div class="metric-label">状态</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 包列表 -->
+        <section class="packages-section">
+            <h2>可用资源</h2>
+            <div id="packages-container" class="packages-grid">
+                <!-- 动态加载内容 -->
+                <div class="loading-container">
+                    <div class="loading-spinner">
+                        <div class="loading-spinner-ring"></div>
+                        <div class="loading-spinner-ring"></div>
+                        <div class="loading-spinner-ring"></div>
+                    </div>
+                    <div class="loading-text">LOADING</div>
+                    <div class="loading-progress">
+                        <div class="loading-progress-bar"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="pagination" class="pagination"></div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="copyright">Copyright © zym2013 2026. All rights reserved.</div>
+        <a href="/sitemap.xml" class="footer-sitemap" title="站点地图" aria-label="站点地图">
+            <i class="fa-regular fa-map"></i>
+            站点地图
+        </a>
+    </footer>
+
+    <script>
+        // 配置
+        const CONFIG = {
+            LIST_JSON_URL: '/list.json',
+            ITEMS_PER_PAGE: 12,
+            TEST_FILE_URL: 'https://cdn.amlg.top/npm/animejs@3.2.1/lib/anime.min.js' // 用于测速的文件
+        };
+
+        // 状态
+        const state = {
+            packages: [],
+            currentPage: 1,
+            totalPages: 1
+        };
+
+        // DOM
+        const packagesContainer = document.getElementById('packages-container');
+        const paginationContainer = document.getElementById('pagination');
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+            runPerformanceTest();
+
+            try {
+                await loadPackages();
+                renderPackages();
+                renderPagination();
+            } catch (error) {
+                console.error('加载失败:', error);
+                packagesContainer.innerHTML = `<div class="empty-state"><p>❌ 加载资源列表失败</p></div>`;
+            } finally {
+                // 无论成功或失败，加载完成后隐藏动画
+                setTimeout(function () {
+                    document.getElementById('page-loader')?.classList.add('hidden');
+                }, 1000);
+            }
+        });
+
+        function changePage(page) {
+            if (page < 1 || page > state.totalPages || page === state.currentPage) return;
+            state.currentPage = page;
+            renderPackages();
+            renderPagination();
+            document.querySelector('.packages-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        window.changePage = changePage;
+        function escapeHtml(str) {
+            if (typeof str !== 'string') return '';
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        // --- 性能测试逻辑 ---
+        async function runPerformanceTest() {
+            const latencyEl = document.querySelector('#metric-latency .metric-value');
+            const downloadEl = document.querySelector('#metric-download .metric-value');
+            const statusEl = document.querySelector('#metric-status .metric-value');
+            const cards = document.querySelectorAll('.metric-card');
+
+            cards.forEach(c => c.classList.add('testing'));
+            statusEl.textContent = 'Testing...';
+
+            const url = CONFIG.TEST_FILE_URL + '?t=' + new Date().getTime(); // 防止缓存
+
+            try {
+                // 测试延迟和下载
+                const start = performance.now();
+                const response = await fetch(url, { method: 'HEAD', cache: 'no-cache' });
+                const end = performance.now();
+
+                if (!response.ok) throw new Error('Network response was not ok');
+
+                const duration = end - start; // ms
+                const size = parseInt(response.headers.get('content-length')) || 0; // bytes
+
+                // 计算延迟
+                latencyEl.textContent = `${duration.toFixed(0)} ms`;
+                const startDownload = performance.now();
+                const blobResponse = await fetch(url, { cache: 'no-cache' });
+                const blob = await blobResponse.blob();
+                const endDownload = performance.now();
+
+                const downloadDuration = endDownload - startDownload;
+                const blobSize = blob.size;
+                const speedKBps = (blobSize / 1024) / (downloadDuration / 1000);
+
+                downloadEl.textContent = `${speedKBps.toFixed(1)} KB/s`;
+                statusEl.textContent = 'Online';
+                statusEl.style.color = 'var(--ifm-color-success)';
+
+            } catch (error) {
+                console.error('Speed test failed:', error);
+                latencyEl.textContent = 'Error';
+                downloadEl.textContent = 'Error';
+                statusEl.textContent = 'Offline';
+                statusEl.style.color = 'var(--ifm-color-danger)';
+            } finally {
+                cards.forEach(c => c.classList.remove('testing'));
+            }
+        }
+
+        // --- 列表加载逻辑 ---
+        async function loadPackages() {
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), 10000);
+            try {
+                const response = await fetch(CONFIG.LIST_JSON_URL, {
+                    method: 'GET',
+                    headers: { 'Accept': 'application/json' },
+                    signal: controller.signal
+                });
+                clearTimeout(timeout);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                state.packages = await response.json();
+                state.totalPages = Math.ceil(state.packages.length / CONFIG.ITEMS_PER_PAGE);
+            } catch (e) {
+                clearTimeout(timeout);
+                throw e;
+            }
+        }
+
+        function renderPackages() {
+            const start = (state.currentPage - 1) * CONFIG.ITEMS_PER_PAGE;
+            const end = start + CONFIG.ITEMS_PER_PAGE;
+            const pageItems = state.packages.slice(start, end);
+
+            if (pageItems.length === 0) {
+                packagesContainer.innerHTML = `<div class="empty-state"><p>暂无可用资源</p></div>`;
+                return;
+            }
+
+            packagesContainer.innerHTML = pageItems.map(pkg => {
+                return `
+                    <article class="package-card">
+                        <div class="package-header">
+                            <span class="package-name">${escapeHtml(pkg.name)}</span>
+                            ${pkg.version ? `<span class="package-version">v${escapeHtml(pkg.version)}</span>` : ''}
+                        </div>
+                        <a class="package-url" href="${escapeHtml(pkg.cdnUrl)}" target="_blank" rel="noopener noreferrer">
+                            ${escapeHtml(pkg.cdnUrl)}
+                        </a>
+                    </article>
+                `;
+            }).join('');
+        }
+
+        function renderPagination() {
+            paginationContainer.innerHTML = '';
+            if (state.totalPages <= 1) return;
+
+            const maxVisible = 5;
+            let startPage = Math.max(1, state.currentPage - Math.floor(maxVisible / 2));
+            let endPage = Math.min(state.totalPages, startPage + maxVisible - 1);
+            if (endPage - startPage + 1 < maxVisible) {
+                startPage = Math.max(1, endPage - maxVisible + 1);
+            }
+
+            const btns = [];
+            btns.push(`<button class="page-btn ${state.currentPage === 1 ? 'disabled' : ''}" 
+            onclick="changePage(${state.currentPage - 1})" ${state.currentPage === 1 ? 'disabled' : ''}>‹</button>`);
+            for (let i = startPage; i <= endPage; i++) {
+                btns.push(`<button class="page-btn ${i === state.currentPage ? 'active' : ''}" 
+                onclick="changePage(${i})">${i}</button>`);
+            }
+            btns.push(`<button class="page-btn ${state.currentPage === state.totalPages ? 'disabled' : ''}" 
+            onclick="changePage(${state.currentPage + 1})" ${state.currentPage === state.totalPages ? 'disabled' : ''}>›</button>`);
+            btns.push(`<span class="page-info">${state.currentPage} / ${state.totalPages}</span>`);
+
+            paginationContainer.innerHTML = btns.join('');
+        }
+
+        function escapeHtml(str) {
+            if (typeof str !== 'string') return '';
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+
+</html>

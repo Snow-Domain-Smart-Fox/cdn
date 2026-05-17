@@ -1,0 +1,87 @@
+[
+  {
+    "name": "sweetalert2",
+    "version": "11.26.17",
+    "cdnUrl": "https://cdn.amlg.top/npm/sweetalert2@11.26.17/"
+  },
+  {
+    "name": "highlight.js",
+    "version": "11.11.1",
+    "cdnUrl": "https://cdn.amlg.top/gh/highlightjs/cdn-release/"
+  },
+  {
+    "name": "marked",
+    "version": "4.0.0",
+    "cdnUrl": "https://cdn.amlg.top/npm/marked@4.0.0/"
+  },
+  {
+    "name": "dompurify",
+    "version": "3.3.1",
+    "cdnUrl": "https://cdn.amlg.top/npm/dompurify@3.3.1/"
+  },
+  {
+    "name": "katex",
+    "version": "0.16.27",
+    "cdnUrl": "https://cdn.amlg.top/npm/katex@0.16.27/"
+  },
+  {
+    "name": "fontawesome-free",
+    "version": "6.4.0",
+    "cdnUrl": "https://cdn.amlg.top/npm/@fortawesome/fontawesome-free@6.4.0/"
+  },
+  {
+    "name": "fontawesome-free",
+    "version": "7.1.0",
+    "cdnUrl": "https://cdn.amlg.top/npm/@fortawesome/fontawesome-free@7.1.0/"
+  },
+  {
+    "name": "fontawesome-free",
+    "version": "7.2.0",
+    "cdnUrl": "https://cdn.amlg.top/npm/@fortawesome/fontawesome-free@7.2.0/"
+  },
+  {
+    "name": "jquery",
+    "version": "3.7.1",
+    "cdnUrl": "https://cdn.amlg.top/npm/jquery@3.7.1/"
+  },
+  {
+    "name": "izitoast",
+    "version": "1.4.0",
+    "cdnUrl": "https://cdn.amlg.top/npm/izitoast@1.4.0/"
+  },
+  {
+    "name": "clipboard",
+    "version": "2.0.11",
+    "cdnUrl": "https://cdn.amlg.top/npm/clipboard@2.0.11/"
+  },
+  {
+    "name": "vue",
+    "version": "2.6.11",
+    "cdnUrl": "https://cdn.amlg.top/npm/vue@2.6.11/"
+  },
+  {
+    "name": "mark.js",
+    "version": "8.11.1",
+    "cdnUrl": "https://cdn.amlg.top/npm/mark.js@8.11.1/"
+  },
+  {
+    "name": "izitoast-css",
+    "version": "1.4.0",
+    "cdnUrl": "https://cdn.amlg.top/npm/izitoast@1.4.0/"
+  },
+  {
+    "name": "icomoon-css",
+    "version": "master",
+    "cdnUrl": "https://cdn.amlg.top/gh/marcelodolza/iziToast@master/docs/css/"
+  },
+  {
+    "name": "animate.css",
+    "version": "4.1.1",
+    "cdnUrl": "https://cdn.amlg.top/npm/animate.css@4.1.1/"
+  },
+  {
+    "name": "animejs",
+    "version": "3.2.1",
+    "cdnUrl": "https://cdn.amlg.top/npm/animejs@3.2.1/"
+  }
+]
