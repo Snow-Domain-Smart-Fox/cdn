@@ -83,5 +83,15 @@
     "name": "animejs",
     "version": "3.2.1",
     "cdnUrl": "https://cdn.amlg.top/npm/animejs@3.2.1/"
+  },
+  {
+    "name": "lxgw-wenkai-screen-webfont",
+    "version": "1.7.0",
+    "cdnUrl": "https://cdn.amlg.top/npm/lxgw-wenkai-screen-webfont@1.7.0/"
+  },
+  {
+    "name": "caveat",
+    "version": "1.500",
+    "cdnUrl": "https://cdn.amlg.top/npm/googlefonts/caveat/"
   }
 ]
