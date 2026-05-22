@@ -10,8 +10,6 @@ node_modules/
 # Ignore yarn lock files
 yarn.lock
 
-dist/*.d.ts
-dist/*.js
 dist/*.map
 docs/.vuepress/dist
 RELEASE_NOTE*.md
