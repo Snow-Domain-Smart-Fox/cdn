@@ -1,0 +1,16 @@
+node_modules/
+*.log
+.DS_Store
+
+.idea/
+.vs/
+.vscode/
+
+yarn.lock
+
+dist/*.d.ts
+dist/*.map
+
+docs/.vuepress/dist
+.temp
+.cache
