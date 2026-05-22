@@ -93,7 +93,12 @@
     "name": "caveat",
     "version": "1.500",
     "cdnUrl": "https://cdn.amlg.top/npm/googlefonts/caveat/"
-  }, 
+  },
+  {
+    "name": "fuse.js",
+    "version": "7.2.0",
+    "cdnUrl": "https://cdn.amlg.top/npm/fuse.js@7.2.0/"
+  },
   {
     "name": "fuse.js",
     "version": "7.3.0",
