@@ -108,5 +108,15 @@
     "name": "@waline/client",
     "version": "3.15.2",
     "cdnUrl": "https://cdn.amlg.top/npm/@waline/client@3.15.2/"
+  },
+  {
+    "name": "@trim21/gm-fetch",
+    "version": "0.3.0",
+    "cdnUrl": "https://cdn.amlg.top/npm/@trim21/gm-fetch@0.3.0/"
+  },
+  {
+    "name": "@tensorflow/tfjs",
+    "version": "4.22.0",
+    "cdnUrl": "https://cdn.amlg.top/npm/@tensorflow/tfjs@4.22.0/"
   }
 ]
