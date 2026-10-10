@@ -118,5 +118,5 @@
     "name": "@tensorflow/tfjs",
     "version": "4.22.0",
     "cdnUrl": "https://cdn.amlg.top/npm/@tensorflow/tfjs@4.22.0/"
-  }
+  },
 ]
